@@ -1,3 +1,5 @@
+import { createResponsiveStyle } from "@/lib/responsive";
+import { BreakPointProps } from "@/types/responsive";
 import { SizeType } from "@/types/size";
 import { css } from "@emotion/react";
 
@@ -19,20 +21,20 @@ export const spacings: Spacings = {
 export type Space = SizeType | number | string;
 
 export type SpaceProps = {
-  m: Space;
-  mx: Space;
-  my: Space;
-  mt: Space;
-  mr: Space;
-  mb: Space;
-  ml: Space;
-  p: Space;
-  px: Space;
-  py: Space;
-  pt: Space;
-  pr: Space;
-  pb: Space;
-  pl: Space;
+  m: Space | BreakPointProps;
+  mx: Space | BreakPointProps;
+  my: Space | BreakPointProps;
+  mt: Space | BreakPointProps;
+  mr: Space | BreakPointProps;
+  mb: Space | BreakPointProps;
+  ml: Space | BreakPointProps;
+  p: Space | BreakPointProps;
+  px: Space | BreakPointProps;
+  py: Space | BreakPointProps;
+  pt: Space | BreakPointProps;
+  pr: Space | BreakPointProps;
+  pb: Space | BreakPointProps;
+  pl: Space | BreakPointProps;
 };
 
 export const sizeValueToPixel = (size: number) => size * 6;
@@ -61,19 +63,77 @@ export const spaceMixin = ({
   pl,
 }: Partial<SpaceProps>) => {
   return css(
-    m != null && `margin: ${sp(m)});`,
-    mx != null && `margin-right: ${sp(mx)};margin-left:${sp(mx)};`,
-    my != null && `margin-top: ${sp(my)};margin-bottom: ${sp(my)};`,
-    mt != null && `margin-top: ${sp(mt)};`,
-    mr != null && `margin-right: ${sp(mr)};`,
-    mb != null && `margin-bottom: ${sp(mb)};`,
-    ml != null && `margin-left: ${sp(ml)};`,
-    p != null && `padding: ${sp(p)};`,
-    px != null && `padding-right: ${sp(px)};padding-left: ${sp(px)};`,
-    py != null && `padding-top: ${sp(py)};padding-bottom: ${sp(py)};`,
-    pt != null && `padding-top: ${sp(pt)};`,
-    pr != null && `padding-right: ${sp(pr)};`,
-    pb != null && `padding-bottom: ${sp(pb)};`,
-    pl != null && `padding-left: ${sp(pl)};`
+    (m != null && typeof m === "string") || typeof m === "number"
+      ? `margin: ${sp(m)};`
+      : typeof m === "object" &&
+          createResponsiveStyle("margin", sp(m.sm), sp(m.md)),
+    (mx != null && typeof mx === "string") || typeof mx === "number"
+      ? `margin-right: ${sp(mx)};margin-left:${sp(mx)};`
+      : typeof mx === "object" &&
+          createResponsiveStyle(
+            ["marginRight", "marginLeft"],
+            sp(mx.sm),
+            sp(mx.md)
+          ),
+    (my != null && typeof my === "string") || typeof my === "number"
+      ? `margin-top: ${sp(my)};margin-bottom: ${sp(my)};`
+      : typeof my === "object" &&
+          createResponsiveStyle(
+            ["marginTop, marginBottom"],
+            sp(my.sm),
+            sp(my.md)
+          ),
+    (mt != null && typeof mt === "string") || typeof mt === "number"
+      ? `margin-top: ${sp(mt)};`
+      : typeof mt === "object" &&
+          createResponsiveStyle("marginTop", sp(mt.sm), sp(mt.md)),
+    (mr != null && typeof mr === "string") || typeof mr === "number"
+      ? `margin-right: ${sp(mr)};`
+      : typeof mr === "object" &&
+          createResponsiveStyle("marginRight", sp(mr.sm), sp(mr.md)),
+    (mb != null && typeof mb === "string") || typeof mb === "number"
+      ? `margin-bottom: ${sp(mb)};`
+      : typeof mb === "object" &&
+          createResponsiveStyle("marginBottom", sp(mb.sm), sp(mb.md)),
+    (ml != null && typeof ml === "string") || typeof ml === "number"
+      ? `margin-left: ${sp(ml)};`
+      : typeof ml === "object" &&
+          createResponsiveStyle("marginLeft", sp(ml.sm), sp(ml.md)),
+    (p != null && typeof p === "string") || typeof p === "number"
+      ? `padding: ${sp(p)};`
+      : typeof p === "object" &&
+          createResponsiveStyle("padding", sp(p.sm), sp(p.md)),
+    (px != null && typeof px === "string") || typeof px === "number"
+      ? `padding-right: ${sp(px)};padding-left: ${sp(px)};`
+      : typeof px === "object" &&
+          createResponsiveStyle(
+            ["paddingRight", "paddingLeft"],
+            sp(px.sm),
+            sp(px.md)
+          ),
+    (py != null && typeof py === "string") || typeof py === "number"
+      ? `padding-top: ${sp(py)};padding-bottom: ${sp(py)};`
+      : typeof py === "object" &&
+          createResponsiveStyle(
+            ["paddingTop", "paddingBottom"],
+            sp(py.sm),
+            sp(py.md)
+          ),
+    (pt != null && typeof pt === "string") || typeof pt === "number"
+      ? `padding-top: ${sp(pt)};`
+      : typeof pt === "object" &&
+          createResponsiveStyle("paddingTop", sp(pt.sm), sp(pt.md)),
+    (pr != null && typeof pr === "string") || typeof pr === "number"
+      ? `padding-right: ${sp(pr)};`
+      : typeof pr === "object" &&
+          createResponsiveStyle("paddingRight", sp(pr.sm), sp(pr.md)),
+    (pb != null && typeof pb === "string") || typeof pb === "number"
+      ? `padding-bottom: ${sp(pb)};`
+      : typeof pb === "object" &&
+          createResponsiveStyle("paddingBottom", sp(pb.sm), sp(pb.md)),
+    (pl != null && typeof pl === "string") || typeof pl === "number"
+      ? `padding-left: ${sp(pl)};`
+      : typeof pl === "object" &&
+          createResponsiveStyle("paddingLeft", sp(pl.sm), sp(pl.md))
   );
 };
