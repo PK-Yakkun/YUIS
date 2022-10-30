@@ -48,11 +48,11 @@ export const backgroundMixin = ({
             bgGradient.md
           ),
     bgImage != null && typeof bgImage === "string"
-      ? `background-image: ${bgImage};`
+      ? { backgroundImage: `${bgImage}` }
       : typeof bgImage === "object" &&
           createResponsiveStyle("backgroundImage", bgImage.sm, bgImage.md),
     bgRepeat != null && typeof bgRepeat === "string"
-      ? `background-repeat: ${bgRepeat};`
+      ? { backgroundRepeat: `${bgRepeat}` }
       : typeof bgRepeat === "object" &&
           createResponsiveStyle("backgroundRepeat", bgRepeat.sm, bgRepeat.md),
     bgSize != null && typeof bgSize === "string"
