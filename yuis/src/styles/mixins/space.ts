@@ -64,11 +64,11 @@ export const spaceMixin = ({
 }: Partial<SpaceProps>) => {
   return css(
     (m != null && typeof m === "string") || typeof m === "number"
-      ? `margin: ${sp(m)};`
+      ? { margin: `${sp(m)}` }
       : typeof m === "object" &&
           createResponsiveStyle("margin", sp(m.sm), sp(m.md)),
     (mx != null && typeof mx === "string") || typeof mx === "number"
-      ? `margin-right: ${sp(mx)};margin-left:${sp(mx)};`
+      ? { marginRight: `${sp(mx)}`, marginLeft: `${sp(mx)}` }
       : typeof mx === "object" &&
           createResponsiveStyle(
             ["marginRight", "marginLeft"],
@@ -76,7 +76,7 @@ export const spaceMixin = ({
             sp(mx.md)
           ),
     (my != null && typeof my === "string") || typeof my === "number"
-      ? `margin-top: ${sp(my)};margin-bottom: ${sp(my)};`
+      ? { marginTop: `${sp(my)}`, marginBottom: `${sp(my)}` }
       : typeof my === "object" &&
           createResponsiveStyle(
             ["marginTop, marginBottom"],
@@ -84,27 +84,27 @@ export const spaceMixin = ({
             sp(my.md)
           ),
     (mt != null && typeof mt === "string") || typeof mt === "number"
-      ? `margin-top: ${sp(mt)};`
+      ? { marginTop: `${sp(mt)}` }
       : typeof mt === "object" &&
           createResponsiveStyle("marginTop", sp(mt.sm), sp(mt.md)),
     (mr != null && typeof mr === "string") || typeof mr === "number"
-      ? `margin-right: ${sp(mr)};`
+      ? { marginRight: `${sp(mr)}` }
       : typeof mr === "object" &&
           createResponsiveStyle("marginRight", sp(mr.sm), sp(mr.md)),
     (mb != null && typeof mb === "string") || typeof mb === "number"
-      ? `margin-bottom: ${sp(mb)};`
+      ? { marginBottom: `${sp(mb)}` }
       : typeof mb === "object" &&
           createResponsiveStyle("marginBottom", sp(mb.sm), sp(mb.md)),
     (ml != null && typeof ml === "string") || typeof ml === "number"
-      ? `margin-left: ${sp(ml)};`
+      ? { marginLeft: `${sp(ml)}` }
       : typeof ml === "object" &&
           createResponsiveStyle("marginLeft", sp(ml.sm), sp(ml.md)),
     (p != null && typeof p === "string") || typeof p === "number"
-      ? `padding: ${sp(p)};`
+      ? { padding: `${sp(p)}` }
       : typeof p === "object" &&
           createResponsiveStyle("padding", sp(p.sm), sp(p.md)),
     (px != null && typeof px === "string") || typeof px === "number"
-      ? `padding-right: ${sp(px)};padding-left: ${sp(px)};`
+      ? { paddingRight: `${sp(px)}`, paddingLeft: `${sp(px)}` }
       : typeof px === "object" &&
           createResponsiveStyle(
             ["paddingRight", "paddingLeft"],
@@ -112,7 +112,7 @@ export const spaceMixin = ({
             sp(px.md)
           ),
     (py != null && typeof py === "string") || typeof py === "number"
-      ? `padding-top: ${sp(py)};padding-bottom: ${sp(py)};`
+      ? { paddingTop: `${sp(py)}`, paddingBottom: `${sp(py)}` }
       : typeof py === "object" &&
           createResponsiveStyle(
             ["paddingTop", "paddingBottom"],
@@ -120,19 +120,19 @@ export const spaceMixin = ({
             sp(py.md)
           ),
     (pt != null && typeof pt === "string") || typeof pt === "number"
-      ? `padding-top: ${sp(pt)};`
+      ? { paddingTop: `${sp(pt)}` }
       : typeof pt === "object" &&
           createResponsiveStyle("paddingTop", sp(pt.sm), sp(pt.md)),
     (pr != null && typeof pr === "string") || typeof pr === "number"
-      ? `padding-right: ${sp(pr)};`
+      ? { paddingRight: `${sp(pr)}` }
       : typeof pr === "object" &&
           createResponsiveStyle("paddingRight", sp(pr.sm), sp(pr.md)),
     (pb != null && typeof pb === "string") || typeof pb === "number"
-      ? `padding-bottom: ${sp(pb)};`
+      ? { paddingBottom: `${sp(pb)}` }
       : typeof pb === "object" &&
           createResponsiveStyle("paddingBottom", sp(pb.sm), sp(pb.md)),
     (pl != null && typeof pl === "string") || typeof pl === "number"
-      ? `padding-left: ${sp(pl)};`
+      ? { paddingLeft: `${sp(pl)}` }
       : typeof pl === "object" &&
           createResponsiveStyle("paddingLeft", sp(pl.sm), sp(pl.md))
   );
