@@ -28,19 +28,19 @@ export const backgroundMixin = ({
 }: Partial<BackgroundProps>) => {
   return css(
     bg != null && typeof bg === "string"
-      ? `background: ${bg};`
+      ? { background: `${bg}` }
       : typeof bg === "object" &&
           createResponsiveStyle("background", bg.sm, bg.md),
     bgColor != null && typeof bgColor === "string"
-      ? `background-color: ${bgColor};`
+      ? { backgroundColor: `${bgColor}` }
       : typeof bgColor === "object" &&
           createResponsiveStyle("backgroundColor", bgColor.sm, bgColor.md),
     bgClip != null && typeof bgClip === "string"
-      ? `background-clip: ${bgClip};`
+      ? { backgroundClip: `${bgClip}` }
       : typeof bgClip === "object" &&
           createResponsiveStyle("backgroundClip", bgClip.sm, bgClip.md),
     bgGradient != null && typeof bgGradient === "string"
-      ? `background-gradient: ${bgGradient};`
+      ? { backgroundGradient: `${bgGradient}` }
       : typeof bgGradient === "object" &&
           createResponsiveStyle(
             "backgroundGradient",
@@ -56,11 +56,11 @@ export const backgroundMixin = ({
       : typeof bgRepeat === "object" &&
           createResponsiveStyle("backgroundRepeat", bgRepeat.sm, bgRepeat.md),
     bgSize != null && typeof bgSize === "string"
-      ? `background-size: ${bgSize};`
+      ? { backgroundSize: `${bgSize}` }
       : typeof bgSize === "object" &&
           createResponsiveStyle("backgroundSize", bgSize.sm, bgSize.md),
     bgAttachment != null && typeof bgAttachment === "string"
-      ? `background-attachment: ${bgAttachment};`
+      ? { backgroundAttachment: `${bgAttachment}` }
       : typeof bgAttachment === "object" &&
           createResponsiveStyle(
             "backgroundAttachment",
@@ -68,7 +68,7 @@ export const backgroundMixin = ({
             bgAttachment.md
           ),
     bgPosition != null && typeof bgPosition === "string"
-      ? `background-position: ${bgPosition};`
+      ? { backgroundPosition: `${bgPosition}` }
       : typeof bgPosition === "object" &&
           createResponsiveStyle(
             "backgroundPosition",
