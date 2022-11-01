@@ -1,3 +1,4 @@
+import * as CSS from "csstype";
 import { BackgroundProps, backgroundMixin } from "@/styles/mixins/background";
 import { BorderProps, borderMixin } from "@/styles/mixins/border";
 import { LayoutProps, layoutMixin } from "@/styles/mixins/layout";
@@ -28,19 +29,19 @@ export type StyleTypographyProps = Partial<LayoutProps> &
   Partial<BackgroundProps> &
   Partial<BorderProps> &
   Partial<PositionProps> &
-  Partial<OpacityProps>;
+  Partial<OpacityProps> & {
+    textAlign?: CSS.Property.TextAlign;
+    fontSize?: CSS.Property.FontSize;
+    lineHeight?: CSS.Property.LineHeight;
+  };
 
 export const TypographyStyled = styled("span")<TypographyProps>(
-  // Default Theme color
   ({ theme }) => `color: ${theme.color.typography};`,
 
-  // Priority is given to those specified in props.color, if any.
-  ({ color }) => color != null && `&& color: ${color};`,
+  ({ color }) => color != null && { "&&": { color: `${color}` } },
 
-  // Branching styles according to the value specified in props.variant
   ({ variant, theme }) => {
     switch (variant) {
-      // varitnt="title"
       case "title":
         return [
           theme.breakpoint.sm({
@@ -54,7 +55,6 @@ export const TypographyStyled = styled("span")<TypographyProps>(
             lineHeight: theme.font.title.sm.lineH,
           }),
         ];
-      // varitnt="h1"
       case "h1":
         return [
           theme.breakpoint.sm({
@@ -68,7 +68,6 @@ export const TypographyStyled = styled("span")<TypographyProps>(
             lineHeight: theme.font.h1.sm.lineH,
           }),
         ];
-      // varitnt="h2"
       case "h2":
         return [
           theme.breakpoint.sm({
@@ -82,7 +81,6 @@ export const TypographyStyled = styled("span")<TypographyProps>(
             lineHeight: theme.font.h2.sm.lineH,
           }),
         ];
-      // varitnt="h3"
       case "h3":
         return [
           theme.breakpoint.sm({
@@ -96,7 +94,6 @@ export const TypographyStyled = styled("span")<TypographyProps>(
             lineHeight: theme.font.h3.sm.lineH,
           }),
         ];
-      // varitnt="body"
       case "body":
         return [
           theme.breakpoint.sm({
@@ -110,7 +107,6 @@ export const TypographyStyled = styled("span")<TypographyProps>(
             lineHeight: theme.font.body.sm.lineH,
           }),
         ];
-      // varitnt="caption"
       case "caption":
         return [
           theme.breakpoint.sm({
@@ -124,7 +120,6 @@ export const TypographyStyled = styled("span")<TypographyProps>(
             lineHeight: theme.font.caption.sm.lineH,
           }),
         ];
-      // If there is no props.variant
       default:
         return [
           theme.breakpoint.sm({
@@ -140,6 +135,10 @@ export const TypographyStyled = styled("span")<TypographyProps>(
         ];
     }
   },
+  ({ textAlign }) => textAlign != null && { textAlign: `${textAlign}` },
+  ({ fontSize }) => fontSize != null && { "&&": { fontSize: `${fontSize}` } },
+  ({ lineHeight }) =>
+    lineHeight != null && { "&&": { lineHeight: `${lineHeight}` } },
   layoutMixin,
   spaceMixin,
   backgroundMixin,
