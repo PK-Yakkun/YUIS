@@ -28,6 +28,8 @@ export const ButtonStyled = styled.button<ButtonStyleProps>(
         return { background: theme.color.primary };
       case "secondary":
         return { background: theme.color.secondary };
+      case "typography":
+        return { background: theme.color.typography };
       default:
         return { background: bgColor };
     }
