@@ -8,6 +8,9 @@ import { SpaceProps, spaceMixin } from "@/styles/mixins/space";
 import { VariantType } from "@/types/typography";
 import styled from "@emotion/styled";
 import { useState, useEffect, ElementType } from "react";
+import { BreakPointProps } from "@/types/responsive";
+import { createResponsiveStyle } from "@/lib/responsive";
+import { ColorType } from "@/types/color";
 
 type VariantMapping = { [key in VariantType]: string };
 
@@ -30,16 +33,27 @@ export type StyleTypographyProps = Partial<LayoutProps> &
   Partial<BorderProps> &
   Partial<PositionProps> &
   Partial<OpacityProps> & {
-    textAlign?: CSS.Property.TextAlign;
-    fontSize?: CSS.Property.FontSize;
-    lineHeight?: CSS.Property.LineHeight;
+    textAlign?: CSS.Property.TextAlign | BreakPointProps;
+    fontSize?: CSS.Property.FontSize | BreakPointProps;
+    lineHeight?: CSS.Property.LineHeight | BreakPointProps;
   };
 
-export const TypographyStyled = styled("span")<TypographyProps>(
+export const TypographyStyled = styled.span<TypographyProps>(
   ({ theme }) => `color: ${theme.color.typography};`,
-
-  ({ color }) => color != null && { "&&": { color: `${color}` } },
-
+  ({ theme, color }) => {
+    switch (color) {
+      case "body":
+        return { color: theme.color.body };
+      case "primary":
+        return { color: theme.color.primary };
+      case "secondary":
+        return { color: theme.color.secondary };
+      case "typography":
+        return { color: theme.color.typography };
+      default:
+        return null;
+    }
+  },
   ({ variant, theme }) => {
     switch (variant) {
       case "title":
@@ -135,10 +149,21 @@ export const TypographyStyled = styled("span")<TypographyProps>(
         ];
     }
   },
-  ({ textAlign }) => textAlign != null && { textAlign: `${textAlign}` },
-  ({ fontSize }) => fontSize != null && { "&&": { fontSize: `${fontSize}` } },
+  ({ textAlign }) =>
+    textAlign != null && typeof textAlign === "string"
+      ? `text-align: ${textAlign};`
+      : typeof textAlign === "object" &&
+        createResponsiveStyle("textAlign", textAlign.sm, textAlign.md),
+  ({ fontSize }) =>
+    fontSize != null && typeof fontSize === "string"
+      ? `font-size: ${fontSize};`
+      : typeof fontSize === "object" &&
+        createResponsiveStyle("fontSize", fontSize.sm, fontSize.md),
   ({ lineHeight }) =>
-    lineHeight != null && { "&&": { lineHeight: `${lineHeight}` } },
+    lineHeight != null && typeof lineHeight === "string"
+      ? `&& {line-height: ${lineHeight}};`
+      : typeof lineHeight === "object" &&
+        createResponsiveStyle("lineHeight", lineHeight.sm, lineHeight.md),
   layoutMixin,
   spaceMixin,
   backgroundMixin,
@@ -149,7 +174,7 @@ export const TypographyStyled = styled("span")<TypographyProps>(
 
 export type TypographyProps = StyleTypographyProps & {
   variant?: VariantType;
-  color?: string;
+  color?: ColorType;
   children?: string | React.ReactNode;
   as?: ElementType<any> | undefined;
 };
