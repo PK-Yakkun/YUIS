@@ -1,5 +1,7 @@
 import { Button } from "@/components/atoms/Button/Button";
 import { Dispatch, SetStateAction, useEffect } from "react";
+import { PlusIcon } from "@/components/atoms/Icons/PlusIcon";
+import { MinusIcon } from "@/components/atoms/Icons/MinusIcon";
 
 export type CountButtonProps = {
   type: "plus" | "minus";
@@ -26,12 +28,13 @@ export const CountButton = ({ type, count, setCount }: CountButtonProps) => {
     <Button
       bgColor="primary"
       borderRadius={isPuls ? "6px 26px 26px 6px" : "26px 6px 6px 26px"}
-      w="80px"
-      h="80px"
+      w={{ sm: "60px", md: "80px" }}
+      h={{ sm: "60px", md: "80px" }}
+      p={3}
       onClick={() => handleClick()}
       isDisable={isPuls ? isCountUpStop : isCountDownStop}
     >
-      {isPuls ? "+" : "-"}
+      {isPuls ? <PlusIcon /> : <MinusIcon />}
     </Button>
   );
 };

@@ -1,5 +1,5 @@
 import { Box } from "@/components/atoms/Box/Box";
-import { Toggle } from "@/components/molecules/Toggle";
+import { Toggle } from "@/components/molecules/Toggle/Toggle";
 import { ThemeContext } from "@/lib/store/theme";
 import { useContext } from "react";
 
