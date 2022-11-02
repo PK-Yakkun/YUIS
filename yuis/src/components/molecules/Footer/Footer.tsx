@@ -6,7 +6,7 @@ export const Footer = () => {
   return (
     <Box bgColor="secondary">
       <Stack justifyContent="center" py={1}>
-        <Typography>©︎ development by Yakkun.</Typography>
+        <Typography variant="caption">©︎ development by Yakkun.</Typography>
       </Stack>
     </Box>
   );
