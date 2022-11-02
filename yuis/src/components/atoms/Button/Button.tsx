@@ -35,7 +35,7 @@ export const ButtonStyled = styled.button<ButtonStyleProps>(
     }
   },
   // isDisable = trueのとき、クリック無効と不透明度を下げるスタイルを付与
-  ({ isDisable }) => isDisable && { pointerEvents: "none", opacity: ".7" },
+  ({ isDisable }) => isDisable && { pointerEvents: "none", opacity: ".6" },
   { "&:hover": { cursor: "pointer" } },
   layoutMixin,
   spaceMixin,
