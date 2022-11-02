@@ -34,7 +34,11 @@ export const CountButton = ({ type, count, setCount }: CountButtonProps) => {
       onClick={() => handleClick()}
       isDisable={isPuls ? isCountUpStop : isCountDownStop}
     >
-      {isPuls ? <PlusIcon /> : <MinusIcon />}
+      {isPuls ? (
+        <PlusIcon fill="#fff" viewBox="0 0 24 24" />
+      ) : (
+        <MinusIcon fill="#fff" viewBox="0 0 24 24" />
+      )}
     </Button>
   );
 };
