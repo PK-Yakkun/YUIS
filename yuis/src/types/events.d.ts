@@ -1,31 +1,29 @@
 import * as CSS from "csstype";
 
-/**
- * All except EventSubmitType
- */
 export type AllEventType = Partial<EventClickType> &
   Partial<EventChangeType> &
   Partial<EventKeypressType> &
   Partial<EventBlurType> &
   Partial<EventFocusType> &
-  Partial<EventClickDivType>;
+  Partial<EventClickDivType> &
+  Partial<EventSubmitType>;
 
 export type EventClickType = {
-  onClick: (event: React.MouseEvent<HTMLInputElement>) => void;
+  onClick: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 };
 
 export type EventChangeType = {
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: React.ChangeEvent<HTMLElement, MouseEvent>) => void;
 };
 export type EventKeypressType = {
-  onkeypress: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  onkeypress: (event: React.KeyboardEvent<HTMLElement>) => void;
 };
 export type EventBlurType = {
-  onBlur: (event: React.FocusEvent<HTMLInputElement>) => void;
+  onBlur: (event: React.FocusEvent<HTMLElement>) => void;
 };
 
 export type EventFocusType = {
-  onFocus: (event: React.FocusEvent<HTMLInputElement>) => void;
+  onFocus: (event: React.FocusEvent<HTMLElement>) => void;
 };
 
 export type EventClickDivType = {
@@ -33,5 +31,5 @@ export type EventClickDivType = {
 };
 
 export type EventSubmitType = {
-  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  onSubmit: (event: React.FormEvent<HTMLFormElement, MouseEvent>) => void;
 };
