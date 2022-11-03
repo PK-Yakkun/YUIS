@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             property="description"
             content="YUISは、UIコンポーネントライブラリを作成するための基盤です。あなただけのUIライブラリを育成して、世界中のライバルとバトルしよう!!"
           />
-          <meta property="og:title" content="YUIS" />
+          <meta property="og:title" content="YUIS -Yakkun UI System-" />
           <meta
             property="og:description"
             content="あなただけのUIライブラリを育成して、世界中のライバルとバトルしよう!!"
