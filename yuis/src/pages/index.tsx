@@ -58,7 +58,7 @@ const Home: NextPage = () => {
       <Typography variant="body" mb={3}>
         サンプルで作成したカウンターです。
         <br />
-        正と負の上限は10で、それぞれMAXに達するとボタンが非活性になります。
+        正と負の上限はそれぞれ10で、MAXに達すると該当するボタンが非活性になります。
         <br />
         機能をもつ複合的なコンポーネントは、Atomic Designの理解に最適です。
       </Typography>
