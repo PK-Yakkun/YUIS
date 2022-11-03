@@ -39,6 +39,7 @@ export type StyleTypographyProps = Partial<LayoutProps> &
   };
 
 export const TypographyStyled = styled.span<TypographyProps>(
+  { fontFamily: `"M PLUS 1p", sans-serif` },
   ({ theme }) => `color: ${theme.color.typography};`,
   ({ theme, color }) => {
     switch (color) {
