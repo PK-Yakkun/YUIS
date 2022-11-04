@@ -25,14 +25,28 @@ const Home: NextPage = () => {
         <br />
         このページもYUISを用いて作成されており、おもな機能のサンプルを載せています。
         <br />
-        詳細は下記リポジトリのREADMEをご覧ください。
+        詳細は下記リポジトリのREADMEをご覧ください。細かい解説はZennに書いています。
       </Typography>
-      <Stack mb={8}>
+      <Stack>
         <Typography mr={1}>Github:</Typography>
         <Typography color="primary">
           <Stack alignItems="center" gap="4px">
             <a href="https://github.com/PK-Yakkun/YUIS" target="blank">
               YUIS
+            </a>
+            <ExternalLinkIcon fill="primary" viewBox="0 0 24 24" width="18px" />
+          </Stack>
+        </Typography>
+      </Stack>
+      <Stack mb={8}>
+        <Typography mr={1}>Zenn:</Typography>
+        <Typography color="primary">
+          <Stack alignItems="center" gap="4px">
+            <a
+              href="https://zenn.dev/pk_yakkun/articles/54a8fcbcc0195e"
+              target="blank"
+            >
+              UIライブラリを簡単に構築するためのシステム『YUIS』を作成・公開しました
             </a>
             <ExternalLinkIcon fill="primary" viewBox="0 0 24 24" width="18px" />
           </Stack>
