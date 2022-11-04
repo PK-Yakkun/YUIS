@@ -12,6 +12,6 @@ export const opacityMixin = ({ opacity }: Partial<OpacityProps>) => {
     opacity != null && typeof opacity === "string"
       ? { opacity: `${opacity}` }
       : typeof opacity === "object" &&
-          createResponsiveStyle("width", opacity.sm, opacity.md)
+          createResponsiveStyle("opacity", opacity.sm, opacity.md)
   );
 };
