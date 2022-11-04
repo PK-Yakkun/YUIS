@@ -1,5 +1,5 @@
 import { Button } from "@/components/atoms/Button/Button";
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { PlusIcon } from "@/components/atoms/Icons/PlusIcon";
 import { MinusIcon } from "@/components/atoms/Icons/MinusIcon";
 
